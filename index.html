@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lorena — Product Builder</title>
+  <title>Lorena, Product Builder</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -146,7 +146,7 @@
       font-size: 0.95rem;
       font-weight: 300;
       color: var(--clay);
-      max-width: 440px;
+      max-width: 500px;
       opacity: 0;
       animation: fadeUp 0.8s ease forwards 0.5s;
     }
@@ -282,6 +282,35 @@
       line-height: 1.65;
     }
 
+    .project-block ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .project-block ul li {
+      font-size: 0.88rem;
+      color: var(--bark);
+      line-height: 1.6;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--sand);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .project-block ul li:last-child {
+      border-bottom: none;
+    }
+
+    .project-block ul li::before {
+      content: '↳';
+      color: var(--clay);
+      font-size: 0.75rem;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
     .status-dot {
       display: inline-block;
       width: 7px;
@@ -390,6 +419,38 @@
       color: var(--bark);
       line-height: 1.7;
       font-weight: 300;
+      margin-bottom: 14px;
+    }
+
+    .exp-highlights {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .exp-highlights li {
+      font-size: 0.87rem;
+      color: var(--bark);
+      font-weight: 300;
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .exp-highlights li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--clay);
+      font-size: 0.8rem;
+    }
+
+    .exp-highlights li strong {
+      font-weight: 500;
+      color: var(--ink);
     }
 
     /* ─── HOW I THINK ─── */
@@ -458,6 +519,61 @@
       color: rgba(255,255,255,0.5);
       line-height: 1.7;
       font-weight: 300;
+    }
+
+    /* ─── PROOF SECTION ─── */
+    #proof {
+      background: var(--warm-white);
+      max-width: 100%;
+      padding: 80px 48px;
+      border-top: 1px solid var(--sand);
+    }
+
+    #proof .inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    #proof h2 {
+      margin-bottom: 16px;
+    }
+
+    #proof .proof-note {
+      font-size: 0.9rem;
+      color: var(--bark);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .proof-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .proof-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--bark);
+      font-weight: 300;
+    }
+
+    .proof-list li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--clay);
+      flex-shrink: 0;
     }
 
     /* ─── CONTACT ─── */
@@ -587,7 +703,7 @@
         min-height: auto;
       }
 
-      #building, #thinking {
+      #building, #thinking, #proof {
         padding: 80px 24px;
       }
 
@@ -607,6 +723,11 @@
 
       .thinking-grid {
         grid-template-columns: 1fr;
+      }
+
+      #proof .inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
       }
 
       footer {
@@ -639,10 +760,9 @@
   <!-- HERO -->
   <section id="hero">
     <p class="hero-eyebrow">Product Manager & Builder</p>
-    <p class="hero-sub">Currently working in operations at NovoPsych • Previously Product Manager at Primetrace</p>
     <h1 class="hero-name">Hi, I'm <em>Lorena.</em></h1>
-    <p class="hero-headline">I turn messy ideas into useful products that users love!</p>
-    <p class="hero-sub">Focused on real-life usefulness, mental wellbeing, and building products that people actually return to. Currently working in product operations at NovoPsych while building independent products.</p>
+    <p class="hero-headline">I build simple, thoughtful digital products, from idea to execution.</p>
+    <p class="hero-sub">Focused on real-life usefulness, mental wellbeing, and building products that people actually return to. Currently in product operations at NovoPsych, and building independently on the side.</p>
     <p class="hero-scroll-hint">Scroll to explore</p>
   </section>
 
@@ -655,26 +775,25 @@
       <div class="project-card fade-in">
         <span class="project-tag">In Development</span>
         <h3 class="project-name">Ari</h3>
-        <p class="project-tagline">An AI companion for elderly users — gentle, reliable, and genuinely warm.</p>
+        <p class="project-tagline">An AI companion for elderly users, calm, reliable, and genuinely warm.</p>
 
         <div class="project-grid">
           <div class="project-block">
             <h4>The Problem</h4>
-            <p>Many elderly people feel disconnected — from routines, from family, from themselves. Generic apps don't speak their language and require too much cognitive effort just to get started.</p>
+            <p>Many elderly people feel cut off, from routines, from family, from a sense of structure. Most apps aren't built for them: too much friction, too many steps, too little warmth.</p>
           </div>
           <div class="project-block">
-            <h4>The Idea</h4>
-            <p>A calm, conversational AI companion that sends gentle reminders, checks in daily, shares small motivations, and offers real emotional support — without being overwhelming or patronizing.</p>
+            <h4>The Product</h4>
+            <p>A conversational AI that checks in daily, sends gentle reminders, and offers real emotional presence, without being patronizing. Designed for low cognitive effort and high trust.</p>
           </div>
           <div class="project-block">
-            <h4>Current Status</h4>
-            <div class="project-block">
-            <h4>What I've done so far</h4>
-            <p>• Conducted early conversations with caregivers and elderly users<br>
-               • Mapped daily interaction flows and emotional touchpoints<br>
-               • Defined MVP scope and key use cases (reminders, check-ins, companionship)<br>
-               • Exploring technical approaches using conversational AI</p>
-              </div>
+            <h4>Where It Stands</h4>
+            <ul>
+              <li>Interviewed caregivers and elderly users to validate the core need</li>
+              <li>Mapped daily interaction flows and emotional touchpoints</li>
+              <li>Defined MVP scope: reminders, daily check-ins, companionship loop</li>
+              <li>Evaluating conversational AI approaches for the core experience</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -690,28 +809,28 @@
       <div class="experiment-card fade-in">
         <div class="experiment-icon">🧩</div>
         <h3>One-Minute Games</h3>
-        <p>Tiny, low-stakes mobile games designed for idle moments — no ads, no scores, no stress. Just playful mental resets.</p>
+        <p>Tiny, low-stakes mobile games for idle moments, no ads, no scores, no pressure. Just small mental resets that feel good.</p>
         <span class="status-label">→ Prototyping</span>
       </div>
 
       <div class="experiment-card fade-in">
         <div class="experiment-icon">✍️</div>
         <h3>Write It Out</h3>
-        <p>An AI journaling tool that asks one good question per day and gently mirrors what you write back — to help you actually hear yourself.</p>
+        <p>An AI journaling tool that asks one good question per day and gently reflects back what you wrote, to help you actually hear yourself.</p>
         <span class="status-label">→ Concept stage</span>
       </div>
 
       <div class="experiment-card fade-in">
         <div class="experiment-icon">🗓️</div>
         <h3>Micro Habits Tracker</h3>
-        <p>Dead simple habit tracking — no streaks, no guilt. Just a quiet log of the small things you did today.</p>
+        <p>Habit tracking without streaks or guilt. Just a quiet record of the small things you did today, nothing more.</p>
         <span class="status-label">→ Early build</span>
       </div>
 
       <div class="experiment-card fade-in">
         <div class="experiment-icon">💡</div>
         <h3>Monetization Lab</h3>
-        <p>Testing small digital products — templates, prompt packs, niche tools — to understand what real people pay for and why.</p>
+        <p>Testing small digital products, templates, prompt packs, niche tools, to understand what real people pay for and why.</p>
         <span class="status-label">→ Ongoing</span>
       </div>
     </div>
@@ -730,8 +849,14 @@
           <p class="exp-company">NovoPsych · NovoNote</p>
         </div>
         <div>
-          <p class="exp-role">Product Operations & Support</p>
-          <p class="exp-desc">Working at the overlap of operations, product, and users in a healthtech SaaS environment. I build the internal processes that reduce noise — refund flows, discount handling, support documentation — so the team can focus on what matters. I work closely with engineering to surface bugs and reliability issues before they become user complaints, and I synthesize clinician and patient feedback into onboarding improvements that actually land.</p>
+          <p class="exp-role">Product, Operations & Support</p>
+          <p class="exp-desc">Bridging operations, product, and users in a healthtech SaaS environment. I make internal processes work so the team doesn't have to think about them.</p>
+          <ul class="exp-highlights">
+            <li>Built scalable documentation for refunds, cutting support load</li>
+            <li>Partnered with engineering to catch and resolve product bugs before they reached users</li>
+            <li>Synthesized clinician and patient feedback into onboarding improvements</li>
+            <li>Balanced user advocacy with internal priorities to influence roadmap decisions</li>
+          </ul>
         </div>
       </div>
 
@@ -742,7 +867,13 @@
         </div>
         <div>
           <p class="exp-role">Product Manager</p>
-          <p class="exp-desc"> Led discovery and strategy for Crafto, a consumer app where retention was the hard problem. <strong>Doubled retention from 13% to 27%</strong> through weekly journey mapping and user research. Identified an unmapped business-user segment, unlocking new monetization opportunities. <strong>Increased premium conversion from 1.5% to 6.5%</strong>.</p>
+          <p class="exp-desc">Led product discovery and strategy for Crafto, a consumer app. Retention was the real problem, and fixing it meant going deep with users, not just the data.</p>
+          <ul class="exp-highlights">
+            <li><strong>Doubled retention from 13% → 27%</strong> through weekly journey mapping and user research</li>
+            <li><strong>Grew premium conversion from 1.5% → 6.5%</strong> by redesigning the upgrade flow</li>
+            <li>Identified an unmapped business-user segment, opening new monetization angles</li>
+            <li>Ran KPI analysis and cross-functional reviews to guide roadmap decisions</li>
+          </ul>
         </div>
       </div>
 
@@ -753,7 +884,12 @@
         </div>
         <div>
           <p class="exp-role">Founder & Product Manager</p>
-          <p class="exp-desc">Built a resource platform for au pairs and non-immigrants navigating life in the U.S. — a problem I understood firsthand. Took it from concept to a working MVP using no-code and low-code tools with API integrations. Did the full product loop myself: user research, journey mapping, persona development, prototype, launch. It taught me a lot about what it means to build something real with limited resources and high personal stakes.</p>
+          <p class="exp-desc">Built a resource platform for au pairs and non-immigrants in the U.S., a problem I knew firsthand. Took it from zero to a working MVP, solo.</p>
+          <ul class="exp-highlights">
+            <li>Led full discovery: user research, journey mapping, and persona development</li>
+            <li>Designed and launched the app using no-code tools with API integrations</li>
+            <li>Validated product-market fit through direct user feedback and iteration</li>
+          </ul>
         </div>
       </div>
 
@@ -764,7 +900,12 @@
         </div>
         <div>
           <p class="exp-role">Associate Product Manager</p>
-          <p class="exp-desc">Joined early to help define a product for community health workers — a user group with very specific needs that generic tools weren't serving. Led user research, shaped the persona framework, and coordinated the cross-functional work that delivered the first MVP. Built KPI dashboards that gave leadership the visibility they needed to close $200K+ in fundraising. Good reminder that clear data, presented well, moves things forward.</p>
+          <p class="exp-desc">Joined early to help shape a product for community health workers, a user group with very specific needs that generic tools weren't meeting.</p>
+          <ul class="exp-highlights">
+            <li>Led user research and built the persona framework that shaped the first MVP</li>
+            <li>Managed backlog and coordinated cross-functional delivery end-to-end</li>
+            <li><strong>Built KPI dashboards that supported $200K+ in fundraising</strong></li>
+          </ul>
         </div>
       </div>
 
@@ -781,67 +922,68 @@
         <div class="thinking-block">
           <div class="thinking-number">01</div>
           <h3>Simple over clever</h3>
-          <p>If I have to explain how to use it, it's not ready. The best product experiences feel obvious in hindsight — which is the hardest thing to achieve.</p>
+          <p>If I have to explain how to use it, it's not ready. The best product experiences feel obvious in hindsight, which is the hardest thing to build.</p>
         </div>
 
         <div class="thinking-block">
           <div class="thinking-number">02</div>
           <h3>Useful before beautiful</h3>
-          <p>Design matters deeply — but it has to earn its place. I start with whether something actually works for a real person before thinking about how it looks.</p>
+          <p>Design matters, but it has to earn its place. I start with whether something actually works for a real person before thinking about how it looks.</p>
         </div>
 
         <div class="thinking-block">
           <div class="thinking-number">03</div>
           <h3>Retention tells the truth</h3>
-          <p>Anyone can get a download. The honest metric is whether someone came back the next day. Retention is where the real product feedback lives.</p>
+          <p>Anyone can get a download. The honest metric is whether someone came back the next day. Retention is where real product feedback lives.</p>
         </div>
 
         <div class="thinking-block">
           <div class="thinking-number">04</div>
           <h3>Products need to pay for themselves</h3>
-          <p>I take the business side seriously. A product that doesn't sustain itself can't keep helping people. I think about pricing and monetization early — not as an afterthought.</p>
+          <p>A product that can't sustain itself can't keep helping people. I think about pricing and monetization early, not as an afterthought.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <section id="proof">
-  <p class="section-label">Proof</p>
-  <h2>How I <em>work</em></h2>
-  <p>   I document my thinking and product decisions through lightweight artifacts: </p>
-  <ul>
-    <li>User journey maps</li>
-    <li>Early product specs</li>
-    <li>Experiment notes</li>
-  </ul>
+  <!-- PROOF -->
+  <div id="proof">
+    <div class="inner">
+      <div class="fade-in">
+        <p class="section-label">How I work</p>
+        <h2>Process <em>over</em> polish</h2>
+        <p class="proof-note">I document decisions as I make them, not to look organized, but because thinking out loud is how I catch mistakes early. Happy to share detailed case studies on request.</p>
+      </div>
+      <ul class="proof-list fade-in">
+        <li>User journey maps and research notes</li>
+        <li>Early product specs and PRDs</li>
+        <li>Experiment logs and metric reviews</li>
+        <li>Onboarding flow analyses</li>
+        <li>Lightweight retrospectives</li>
+      </ul>
+    </div>
+  </div>
 
-  <p>
-    (Happy to share detailed case studies upon request.)
-  </p>
-</section>
-
-  
   <!-- CONTACT -->
   <section id="contact">
     <p class="contact-intro fade-in">Let's talk</p>
     <h2 class="fade-in">Got something <em>interesting?</em></h2>
-    <p class="fade-in">Whether it's a collaboration, a question, or just a good conversation about products, I'm always open to it!</p>
-    <a href="/cdn-cgi/l/email-protection#462e232a2a29062a2934232827682529" class="contact-btn fade-in">Send a message</a>
+    <p class="fade-in">Whether it's a collaboration, a role, or just a good conversation about products, I'm genuinely open to it.</p>
+    <a href="mailto:adm.lorenasantos@hotmail.com" class="contact-btn fade-in">Send a message</a>
 
     <div class="contact-links fade-in">
       <a href="https://www.linkedin.com/in/lorenaksantos/" target="_blank">LinkedIn</a>
-      <a href="mailto:adm.lorenasantos@hotmail.com" class="contact-btn">E-mail</a>
-      
+      <a href="mailto:adm.lorenasantos@hotmail.com">Email</a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2025 Lorena. Built thoughtfully.</p>
+    <p>© 2025 Lorena Santos. Built thoughtfully.</p>
     <p>Open to collaborations & conversations.</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     // Intersection Observer for fade-in animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
