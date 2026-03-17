@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lorena — Product Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #faf7f2;
+      --warm-white: #f5f0e8;
+      --sand: #e8ddd0;
+      --clay: #c4a882;
+      --terracotta: #b5735a;
+      --bark: #6b4f3a;
+      --ink: #2a1f15;
+      --mist: #ede8e0;
+      --accent: #d4825f;
+
+      --font-serif: 'Lora', Georgia, serif;
+      --font-sans: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(250, 247, 242, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bark);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--terracotta);
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 100px 48px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      padding-top: 160px;
+      padding-bottom: 120px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.1s;
+    }
+
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--bark);
+      max-width: 560px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.35s;
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--clay);
+      max-width: 440px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.5s;
+    }
+
+    .hero-scroll-hint {
+      margin-top: 72px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--clay);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.7s;
+    }
+
+    .hero-scroll-hint::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--clay);
+    }
+
+    /* ─── SECTION HEADINGS ─── */
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 48px;
+    }
+
+    h2 em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: var(--sand);
+      margin: 0 auto 80px;
+    }
+
+    /* ─── BUILDING SECTION ─── */
+    #building {
+      background: var(--warm-white);
+      max-width: 100%;
+      padding: 100px 48px;
+    }
+
+    #building .inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: 16px;
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--terracotta), var(--clay));
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      background: rgba(181, 115, 90, 0.1);
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin-bottom: 20px;
+    }
+
+    .project-name {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .project-tagline {
+      font-size: 0.9rem;
+      color: var(--clay);
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+    }
+
+    .project-block h4 {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 10px;
+    }
+
+    .project-block p {
+      font-size: 0.92rem;
+      color: var(--bark);
+      line-height: 1.65;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #7cb97c;
+      margin-right: 6px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* ─── EXPERIMENTS ─── */
+    .experiments-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .experiment-card {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 12px;
+      padding: 28px 32px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .experiment-card:hover {
+      border-color: var(--clay);
+      transform: translateY(-2px);
+    }
+
+    .experiment-icon {
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    .experiment-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .experiment-card p {
+      font-size: 0.87rem;
+      color: var(--bark);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .experiment-card .status-label {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--clay);
+    }
+
+    /* ─── EXPERIENCE ─── */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 32px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .experience-item:first-child {
+      border-top: 1px solid var(--sand);
+    }
+
+    .exp-meta {
+      padding-top: 4px;
+    }
+
+    .exp-year {
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--clay);
+      margin-bottom: 4px;
+    }
+
+    .exp-company {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--bark);
+    }
+
+    .exp-role {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .exp-desc {
+      font-size: 0.9rem;
+      color: var(--bark);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ─── HOW I THINK ─── */
+    #thinking {
+      background: var(--ink);
+      max-width: 100%;
+      padding: 100px 48px;
+    }
+
+    #thinking .inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    #thinking .section-label {
+      color: var(--clay);
+    }
+
+    #thinking h2 {
+      color: var(--cream);
+    }
+
+    #thinking h2 em {
+      color: var(--terracotta);
+    }
+
+    .thinking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .thinking-block {
+      background: rgba(255,255,255,0.03);
+      padding: 40px;
+      transition: background 0.2s ease;
+    }
+
+    .thinking-block:hover {
+      background: rgba(255,255,255,0.07);
+    }
+
+    .thinking-number {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-style: italic;
+      color: var(--terracotta);
+      opacity: 0.5;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .thinking-block h3 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .thinking-block p {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      text-align: center;
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+
+    .contact-intro {
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      color: var(--clay);
+      margin-bottom: 20px;
+    }
+
+    #contact h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      margin-bottom: 20px;
+    }
+
+    #contact p {
+      font-size: 0.97rem;
+      color: var(--bark);
+      max-width: 400px;
+      margin: 0 auto 48px;
+      font-weight: 300;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 40px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .contact-btn:hover {
+      background: var(--terracotta);
+      transform: translateY(-2px);
+    }
+
+    .contact-links {
+      margin-top: 36px;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .contact-links a {
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      color: var(--clay);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-links a:hover {
+      color: var(--terracotta);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--sand);
+      padding: 28px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 100%;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: var(--clay);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 18px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: 80px 24px;
+      }
+
+      #hero {
+        padding-top: 120px;
+        min-height: auto;
+      }
+
+      #building, #thinking {
+        padding: 80px 24px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .experiments-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .thinking-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        padding: 24px;
+      }
+
+      .project-card {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Lorena</a>
+    <ul class="nav-links">
+      <li><a href="#building">Building</a></li>
+      <li><a href="#experiments">Experiments</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#thinking">Thinking</a></li>
+      <li><a href="#contact">Say Hi</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="hero-eyebrow">Product Manager & Builder</p>
+    <h1 class="hero-name">Hi, I'm <em>Lorena.</em></h1>
+    <p class="hero-headline">I build simple, thoughtful digital products — from idea to execution.</p>
+    <p class="hero-sub">Focused on real-life usefulness, mental wellbeing, and problem-solving. No fluff, just things that actually help.</p>
+    <p class="hero-scroll-hint">Scroll to explore</p>
+  </section>
+
+  <!-- WHAT I'M BUILDING -->
+  <div id="building">
+    <div class="inner">
+      <p class="section-label fade-in">Main project</p>
+      <h2 class="fade-in">What I'm <em>building</em></h2>
+
+      <div class="project-card fade-in">
+        <span class="project-tag">In Development</span>
+        <h3 class="project-name">Ari</h3>
+        <p class="project-tagline">An AI companion for elderly users — gentle, reliable, and genuinely warm.</p>
+
+        <div class="project-grid">
+          <div class="project-block">
+            <h4>The Problem</h4>
+            <p>Many elderly people feel disconnected — from routines, from family, from themselves. Generic apps don't speak their language and require too much cognitive effort just to get started.</p>
+          </div>
+          <div class="project-block">
+            <h4>The Idea</h4>
+            <p>A calm, conversational AI companion that sends gentle reminders, checks in daily, shares small motivations, and offers real emotional support — without being overwhelming or patronizing.</p>
+          </div>
+          <div class="project-block">
+            <h4>Current Status</h4>
+            <p><span class="status-dot"></span>Designing core flows and validating with target users. Early conversations with caregivers suggest strong resonance with the concept.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIMENTS -->
+  <section id="experiments">
+    <p class="section-label fade-in">Side work</p>
+    <h2 class="fade-in">Experiments <em>&amp; ideas</em></h2>
+
+    <div class="experiments-grid">
+      <div class="experiment-card fade-in">
+        <div class="experiment-icon">🧩</div>
+        <h3>One-Minute Games</h3>
+        <p>Tiny, low-stakes mobile games designed for idle moments — no ads, no scores, no stress. Just playful mental resets.</p>
+        <span class="status-label">→ Prototyping</span>
+      </div>
+
+      <div class="experiment-card fade-in">
+        <div class="experiment-icon">✍️</div>
+        <h3>Write It Out</h3>
+        <p>An AI journaling tool that asks one good question per day and gently mirrors what you write back — to help you actually hear yourself.</p>
+        <span class="status-label">→ Concept stage</span>
+      </div>
+
+      <div class="experiment-card fade-in">
+        <div class="experiment-icon">🗓️</div>
+        <h3>Micro Habits Tracker</h3>
+        <p>Dead simple habit tracking — no streaks, no guilt. Just a quiet log of the small things you did today.</p>
+        <span class="status-label">→ Early build</span>
+      </div>
+
+      <div class="experiment-card fade-in">
+        <div class="experiment-icon">💡</div>
+        <h3>Monetization Lab</h3>
+        <p>Testing small digital products — templates, prompt packs, niche tools — to understand what real people pay for and why.</p>
+        <span class="status-label">→ Ongoing</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label fade-in">Background</p>
+    <h2 class="fade-in">Where I've <em>worked</em></h2>
+
+    <div class="experience-list">
+      <div class="experience-item fade-in">
+        <div class="exp-meta">
+          <p class="exp-year">2022 – Present</p>
+          <p class="exp-company">Independent</p>
+        </div>
+        <div>
+          <p class="exp-role">Product Builder & Indie Maker</p>
+          <p class="exp-desc">Designing, building, and shipping digital products from scratch. Running user interviews, mapping problems, writing specs, and coordinating with developers. Learning what makes people actually return to something — and what makes them quietly leave.</p>
+        </div>
+      </div>
+
+      <div class="experience-item fade-in">
+        <div class="exp-meta">
+          <p class="exp-year">2019 – 2022</p>
+          <p class="exp-company">SaaS Company</p>
+        </div>
+        <div>
+          <p class="exp-role">Product Manager, Customer Experience</p>
+          <p class="exp-desc">Worked at the intersection of users and product — gathering feedback at scale, identifying patterns in support tickets, and translating them into product changes. Reduced onboarding drop-off by 30% by simplifying a five-step setup into two.</p>
+        </div>
+      </div>
+
+      <div class="experience-item fade-in">
+        <div class="exp-meta">
+          <p class="exp-year">2016 – 2019</p>
+          <p class="exp-company">Retail / E-commerce</p>
+        </div>
+        <div>
+          <p class="exp-role">Customer Success Lead</p>
+          <p class="exp-desc">Managed a team handling thousands of customer interactions monthly. The real work was understanding why people were frustrated, not just solving the immediate issue. That lens never left me — I still think about users as people trying to get something done, not just data points.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW I THINK -->
+  <div id="thinking">
+    <div class="inner">
+      <p class="section-label fade-in">Philosophy</p>
+      <h2 class="fade-in">How I <em>think</em></h2>
+
+      <div class="thinking-grid fade-in">
+        <div class="thinking-block">
+          <div class="thinking-number">01</div>
+          <h3>Simple over clever</h3>
+          <p>If I have to explain how to use it, it's not ready. The best product experiences feel obvious in hindsight — which is the hardest thing to achieve.</p>
+        </div>
+
+        <div class="thinking-block">
+          <div class="thinking-number">02</div>
+          <h3>Useful before beautiful</h3>
+          <p>Design matters deeply — but it has to earn its place. I start with whether something actually works for a real person before thinking about how it looks.</p>
+        </div>
+
+        <div class="thinking-block">
+          <div class="thinking-number">03</div>
+          <h3>Retention tells the truth</h3>
+          <p>Anyone can get a download. The honest metric is whether someone came back the next day. Retention is where the real product feedback lives.</p>
+        </div>
+
+        <div class="thinking-block">
+          <div class="thinking-number">04</div>
+          <h3>Products need to pay for themselves</h3>
+          <p>I take the business side seriously. A product that doesn't sustain itself can't keep helping people. I think about pricing and monetization early — not as an afterthought.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="contact-intro fade-in">Let's talk</p>
+    <h2 class="fade-in">Got something <em>interesting?</em></h2>
+    <p class="fade-in">Whether it's a collaboration, a question, or just a good conversation about products — I'm genuinely open to it.</p>
+    <a href="mailto:hello@lorena.co" class="contact-btn fade-in">Send a message</a>
+
+    <div class="contact-links fade-in">
+      <a href="#">LinkedIn</a>
+      <a href="#">Twitter / X</a>
+      <a href="#">Read.cv</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Lorena. Built thoughtfully.</p>
+    <p>Open to collaborations & conversations.</p>
+  </footer>
+
+  <script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
