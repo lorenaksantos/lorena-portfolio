@@ -223,6 +223,11 @@
       padding: 48px;
       position: relative;
       overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .project-card:last-child {
+      margin-bottom: 0;
     }
 
     .project-card::before {
@@ -759,10 +764,10 @@
 
   <!-- HERO -->
   <section id="hero">
-    <p class="hero-eyebrow">Product Manager & Builder</p>
+    <p class="hero-eyebrow">Product Manager &amp; Builder</p>
     <h1 class="hero-name">Hi, I'm <em>Lorena.</em></h1>
     <p class="hero-headline">I build simple, thoughtful digital products, from idea to execution.</p>
-    <p class="hero-sub">Focused on real-life usefulness, mental wellbeing, and building products that people actually return to. Currently in product operations at NovoPsych, and building independently on the side.</p>
+    <p class="hero-sub">Focused on real-life usefulness, mental wellbeing, and building products that people actually return to. Currently building Justa, a case management platform for solo and small law firms.</p>
     <p class="hero-scroll-hint">Scroll to explore</p>
   </section>
 
@@ -771,6 +776,32 @@
     <div class="inner">
       <p class="section-label fade-in">Main project</p>
       <h2 class="fade-in">What I'm <em>building</em></h2>
+
+      <div class="project-card fade-in">
+        <span class="project-tag"><span class="status-dot"></span>In Development</span>
+        <h3 class="project-name">Justa</h3>
+        <p class="project-tagline">A case management platform built for solo and small law firms, available in English and Portuguese.</p>
+
+        <div class="project-grid">
+          <div class="project-block">
+            <h4>The Problem</h4>
+            <p>Solo and small-firm lawyers are underserved by legal tech built for enterprise teams, too complex, too expensive, and rarely available in anything but English.</p>
+          </div>
+          <div class="project-block">
+            <h4>The Product</h4>
+            <p>A streamlined case management tool that lets small firms track cases, clients, and deadlines without the overhead of enterprise software. Built as two complete, equal versions: English and Portuguese.</p>
+          </div>
+          <div class="project-block">
+            <h4>Where It Stands</h4>
+            <ul>
+              <li>Validated the core problem through direct attorney interviews</li>
+              <li>Shipped a working product as sole PM, partnered with a developer</li>
+              <li>Built and launched full English and Portuguese versions</li>
+              <li>Iterating on onboarding and case workflows based on user feedback</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
       <div class="project-card fade-in">
         <span class="project-tag">In Development</span>
@@ -792,7 +823,7 @@
               <li>Interviewed caregivers and elderly users to validate the core need</li>
               <li>Mapped daily interaction flows and emotional touchpoints</li>
               <li>Defined MVP scope: reminders, daily check-ins, companionship loop</li>
-              <li>Evaluating conversational AI approaches for the core experience</li>
+              <li>Built and tested with English and Portuguese support</li>
             </ul>
           </div>
         </div>
@@ -806,6 +837,13 @@
     <h2 class="fade-in">Experiments <em>&amp; ideas</em></h2>
 
     <div class="experiments-grid">
+      <div class="experiment-card fade-in">
+        <div class="experiment-icon">🎨</div>
+        <h3>Bottle Brain</h3>
+        <p>A casual color-sorting puzzle game for iOS and Android, simple mechanics, satisfying progression, no pressure.</p>
+        <span class="status-label">→ Closed testing</span>
+      </div>
+
       <div class="experiment-card fade-in">
         <div class="experiment-icon">🧩</div>
         <h3>One-Minute Games</h3>
@@ -826,13 +864,6 @@
         <p>Habit tracking without streaks or guilt. Just a quiet record of the small things you did today, nothing more.</p>
         <span class="status-label">→ Early build</span>
       </div>
-
-      <div class="experiment-card fade-in">
-        <div class="experiment-icon">💡</div>
-        <h3>Monetization Lab</h3>
-        <p>Testing small digital products, templates, prompt packs, niche tools, to understand what real people pay for and why.</p>
-        <span class="status-label">→ Ongoing</span>
-      </div>
     </div>
   </section>
 
@@ -842,23 +873,6 @@
     <h2 class="fade-in">Where I've <em>worked</em></h2>
 
     <div class="experience-list">
-
-      <div class="experience-item fade-in">
-        <div class="exp-meta">
-          <p class="exp-year">Apr 2025 – Present</p>
-          <p class="exp-company">NovoPsych · NovoNote</p>
-        </div>
-        <div>
-          <p class="exp-role">Product, Operations & Support</p>
-          <p class="exp-desc">Bridging operations, product, and users in a healthtech SaaS environment. I make internal processes work so the team doesn't have to think about them.</p>
-          <ul class="exp-highlights">
-            <li>Built scalable documentation for refunds, cutting support load</li>
-            <li>Partnered with engineering to catch and resolve product bugs before they reached users</li>
-            <li>Synthesized clinician and patient feedback into onboarding improvements</li>
-            <li>Balanced user advocacy with internal priorities to influence roadmap decisions</li>
-          </ul>
-        </div>
-      </div>
 
       <div class="experience-item fade-in">
         <div class="exp-meta">
@@ -883,7 +897,7 @@
           <p class="exp-company">Au-dulting</p>
         </div>
         <div>
-          <p class="exp-role">Founder & Product Manager</p>
+          <p class="exp-role">Founder &amp; Product Manager</p>
           <p class="exp-desc">Built a resource platform for au pairs and non-immigrants in the U.S., a problem I knew firsthand. Took it from zero to a working MVP, solo.</p>
           <ul class="exp-highlights">
             <li>Led full discovery: user research, journey mapping, and persona development</li>
@@ -979,8 +993,8 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2025 Lorena Santos. Built thoughtfully.</p>
-    <p>Open to collaborations & conversations.</p>
+    <p>© 2026 Lorena Santos. Built thoughtfully.</p>
+    <p>Open to collaborations &amp; conversations.</p>
   </footer>
 
   <script>
